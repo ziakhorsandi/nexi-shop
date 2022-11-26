@@ -4,7 +4,7 @@ import Button from '../components/Button';
 import Field from '../components/Field';
 import Input from '../components/Input';
 import Page from '../components/Page';
-import { fetchJson } from '../lib/api';
+import { useSignIn } from '../hooks/user';
 
 //For making delay
 // function sleep(ms) {
@@ -14,28 +14,14 @@ import { fetchJson } from '../lib/api';
 function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { signIn, signInErr, signInLoading } = useSignIn();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError(false);
     // await sleep(2000);
-    try {
-      const response = await fetchJson('api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-      setLoading(false);
-      console.log('Sign-in: ', response);
-      router.push('/');
-    } catch (error) {
-      setError(true);
-      setLoading(false);
-    }
+    const valid = await signIn(email, password);
+    if (valid) router.push('/');
   };
 
   return (
@@ -57,10 +43,10 @@ function SignInPage() {
             required
           />
         </Field>
-        {error && (
+        {signInErr && (
           <div className='text-sm text-red-500'>Invalid credential</div>
         )}
-        {loading ? (
+        {signInLoading ? (
           <div className='text-sm'>Loading ...</div>
         ) : (
           <Button type='submit'>Sign In</Button>

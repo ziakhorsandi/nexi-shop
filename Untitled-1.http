@@ -4,8 +4,12 @@ GET http://localhost:1337/products
 ###
 
 GET http://localhost:1337/cart-items
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY4NTQwMDMwLCJleHAiOjE2NzExMzIwMzB9.Nsuj1b1y5Z61U_cF379fJmeeD51dEQB5_0AZ_AesTII
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY5MjgwNjY2LCJleHAiOjE2NzE4NzI2NjZ9.eDavfLgVJioQ6KfQE79-lJ3tM0BG0suGpw9HXgtJFe0
 ###
+GET http://localhost:3000/api/cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY5MjgwNjY2LCJleHAiOjE2NzE4NzI2NjZ9.eDavfLgVJioQ6KfQE79-lJ3tM0BG0suGpw9HXgtJFe0
+###
+
 GET http://localhost:1337/users/me
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY4NTQwMDMwLCJleHAiOjE2NzExMzIwMzB9.Nsuj1b1y5Z61U_cF379fJmeeD51dEQB5_0AZ_AesTII
 
